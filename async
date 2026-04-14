@@ -1,0 +1,37 @@
+const fs = require('fs');
+
+function writeFile() {
+    fs.writeFile('data.txt', 'Hello, node', (err) => {
+        if (err) throw err;
+        readFile1();
+    });
+}
+
+function readFile1() {
+    fs.readFile('data.txt', 'utf-8', (err, data) => {
+        if (err) throw err;
+        console.log(data);
+        appendFile();
+    });
+}
+
+function appendFile() {
+    fs.appendFile('data.txt', '\nLearning FS Module', (err) => {
+        if (err) throw err;
+        readFile2();
+    });
+}
+
+function readFile2() {
+    fs.readFile('data.txt', 'utf-8', (err, data) => {
+        if (err) throw err;
+        console.log(data);
+        deleteFile();
+    });
+}
+
+function deleteFile() {
+    fs.unlink('data.txt', (err) => {
+        if (err) throw err;
+    });
+}
